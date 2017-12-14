@@ -3,12 +3,13 @@ var app = express();
 app.use(express.static(__dirname+'/view'));
 app.get("/",function (req, res) {
 	// body...
-	res.sendFile(index.html);
-	res.end();
+	res.sendFile('index.html');
+	
 })
+
 app.get("/description",function (req, res) {
 	// body...
-	res.sendFile(description.html);
-	res.end();
+	res.sendFile(__dirname + "/view/" +'description.html');
+	
 })
 app.listen(8080);
