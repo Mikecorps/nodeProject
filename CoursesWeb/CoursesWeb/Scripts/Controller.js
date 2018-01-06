@@ -1,5 +1,8 @@
-﻿var module = angular.module('myDiv', []);
-module.controller('repeat', function ($scope) {
+﻿var module = angular.module('myDiv', ['pluginjs']);
+
+
+
+module.controller('repeat', function ($scope,$rootScope) {
     $scope.courses = [{
         nombre: "algo",
         rama: "programacion",
@@ -18,6 +21,15 @@ module.controller('repeat', function ($scope) {
 
     $scope.options = ["algo", "sdvsd", "4545454"];
     $scope.selected;
+    $scope.send = function () {
+        $rootScope.$emit("dataName", $scope.selected)
+    }
 
-
+});
+module.controller('crtl', function ($scope,$rootScope) {
+    $scope.selected = "segundo controlador";
+    $rootScope.$on("dataName", function (event,data) {
+        $scope.selected = "Dato del primer contrl: " + data;
+        console.log(data)
+    })
 });

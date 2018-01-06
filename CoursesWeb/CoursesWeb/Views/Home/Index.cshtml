@@ -20,7 +20,7 @@
                                 </figure>
                             </div>
                             <div class="media-content">
-                                <p class="title is-4">{{course.nombre}}</p>
+                                <p class="title is-4">@Html.ActionLink("{{course.nombre}}", "Details","Home")</p>
                             </div>
                         </div>
 
@@ -35,10 +35,11 @@
             
         </div>
 
-        <select class="form-control" ng-model="selected" ng-options="var for var in options"></select>
+        <select class="form-control" ng-change="send()" ng-model="selected" ng-options="var for var in options"></select>
+    </div>
+    <div ng-controller="crtl">
         <input class="form-control" type="text" value="{{selected}}" />
     </div>
-   
 </section>
 @section scripts {
     <script src="~/Scripts/Controller.js"></script>
